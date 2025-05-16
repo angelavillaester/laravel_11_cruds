@@ -28,7 +28,7 @@ class AuthController extends Controller
         ]);
 
         Auth::login($user); // Log in the user after registration
-        return redirect()->route('dashboard'); // Redirect to the dashboard
+        return redirect()->route('products.create'); // Redirect to the dashboard
     }
 
     public function showLoginForm() {
@@ -41,7 +41,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->route('dashboard'); // Redirect to the dashboard
+            return redirect()->route('products.index'); // Redirect to the dashboard
         }
 
         return back()->withErrors([
